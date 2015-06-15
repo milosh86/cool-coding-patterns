@@ -26,8 +26,11 @@ slice.call(arguments, 1);
 var hasOwn = Object.prototype.hasOwnProperty;
 // or
 var hasOwn = ({}).hasOwnProperty; 
+//or
+var hasOwn = ({}.hasOwnProperty); 
 // can't use {}.method because the JavaScript grammar tells the engine 
-// to parse any statement starting with { as a block statement 
+// to parse any statement starting with { as a block statement. 
+// with () it looks a little bit tricky, so maybe it's best to stick with Object.protothpe.method...
 hasOwn.call(o, 'propName');
 
 /////////////////////////////////////////////////////////////////////
