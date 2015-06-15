@@ -31,7 +31,7 @@ var hasOwn = ({}.hasOwnProperty);
 // can't use {}.method because the JavaScript grammar tells the engine 
 // to parse any statement starting with { as a block statement. 
 // with () it looks a little bit tricky, so maybe it's best to stick with Object.prototype.method...
-hasOwn.call(o, 'propName');
+hasOwn.call({test: 'some test string'}, 'test');
 
 /////////////////////////////////////////////////////////////////////
 // executing multiple async operations concurrently
