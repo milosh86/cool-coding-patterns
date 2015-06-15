@@ -15,3 +15,41 @@
     asyncRec();
   });
 })();
+
+////////////////////////////////////////////////////////////////////
+// shorter notation for accessing Object and Array prototype methods
+var slice = Array.prototype.slice;
+// or
+var slice = [].slice;
+slice.call(arguments, 1);
+
+var hasOwn = Object.prototype.hasOwnProperty;
+// or
+var hasOwn = ({}).hasOwnProperty;
+hasOwn.call(o, 'propName');
+
+/////////////////////////////////////////////////////////////////////
+// executing multiple async operations concurrently
+function whenAllDone(asyncOps, cb) {
+    var result = [],
+        pending = asyncOps.length;
+    
+    if (pending === 0) {
+        setTimeout(cb.bind(null, null, result), 0);
+        return;
+    }
+    
+    asyncOps.forEach((op, i) => {
+        op({
+            error: (err) => cb(err, null),
+            success: (res) => {
+              result[i] = res;
+              pending--;
+              if (pending === 0) {
+                cb(null, result);
+              }
+            }
+        });
+    });
+}
+}
