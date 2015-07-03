@@ -61,4 +61,11 @@ function whenAllDone(asyncOps, cb) {
         });
     });
 }
+
+//////////////////////////////////////////////////////////////////////////
+// loop 
+function loop(n, f) {
+  for (let i = 0; i < n; i++) {
+  }
+  }
 }
