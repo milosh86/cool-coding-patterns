@@ -63,9 +63,15 @@ function whenAllDone(asyncOps, cb) {
 }
 
 //////////////////////////////////////////////////////////////////////////
-// loop 
+// just loop. Sometimes we just want to do something N times, without iteration or special condition.
+// with ES6 arrow functions it could look very close to other conditional statements.
 function loop(n, f) {
   for (let i = 0; i < n; i++) {
-  }
+    f(i);
   }
 }
+
+loop(10, (i) => {
+  // do somthing 10 times...
+  console.log(i);
+});
